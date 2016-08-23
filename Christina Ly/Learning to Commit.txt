@@ -1,0 +1,21 @@
+cd desktop
+mkdir test
+cd test
+touch index.html
+touch styles.css
+git init
+git add -A
+git commit -m "initial commit"
+
+
+git add -A
+git commit -m "add to html"
+
+git add -A
+git commit -m "add to css"
+
+git log
+git revert -n acfb4de064ed93eb6a0c3d11f034542300f20d5f
+git add -A
+git commit -m "changes to css"
+
