@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name='description' content='jQuery assignment'>
+	<title>Adding a User with jQuery</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#form').submit(function(){
+				// console.log('submitting')
+				$('#table table').append('<tr><th>' + $('#first_name').val() + '</th><th>'+ $('#last_name').val() + '</th><th>' + $('#email').val() + '</th><th>' + $('#contact_no').val() + '</th></tr>');
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="table">
+		<table>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email Address</th>
+				<th>Contact#</th>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<form id="form">
+			<h1>Add User</h1>
+			<hr>
+			First Name:<input id="first_name" type="text" name="first_name" value="First Name"><br>
+			Last Name:<input id="last_name" type="text" name="last_name" value="Last Name"><br>
+			Email Address:<input id="email" type="text" name="email" value="Email Address"><br>
+			Contact No.:<input id="contact_no" type="text" name="contact_no" value="Phone#"><br>
+			<input type="submit" name="submit" value="Add User">
+		</form>
+	</div>
+</body>
+</html>
