@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Pokemex 1st gen</title>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script>
+		$(document).ready(function() {
+			for (var i = 1; i <= 151; i++){
+				$('#pokemon').append('<img id='+ i +' src=\'http://pokeapi.co/media/img/' + i +'.png\'>');
+			};
+			$(document).on('click', '#pokemon img', function(){
+				var this_id = $(this).attr('id')
+				$.get("http://pokeapi.co/api/v1/pokemon/" + this_id, function(info) {
+						var pokemon_info = "<h1>" + info.name + "</h>" + "<img src='http://pokeapi.co/media/img/" + this_id + ".png'>" + "<h4>Types</h4><ul>";
+						for (var i = 0; i < info.types.length; i++){
+						pokemon_info += "<li>" + info.types[i].name + "</li>"	
+						}
+						pokemon_info += "</ul><h4>Height</h4><p>" + info.height + "</p><h4>Weight</h4><p>" + info.weight + "</p>";
+						$('#poke_info').html(pokemon_info);
+				}, "json");
+			})	
+		});
+	</script>
+</head>
+<body>
+	<div id="pokemon"></div>
+	<div id="poke_info">
+		<!-- Sample format
+		<h1>Bulbasaur</h1> // .name
+		<img src="http://pokeapi.co/media/img/1.png">
+		<h4>Types</h4>
+		<ul> // .types[].name
+			<li>poison</li>
+			<li>grass</li>
+		</ul>
+		<h4>Height</h4>
+		<p>7</p> // .height
+		<h4>Weight</h4>
+		<p>69</p> // .weight -->
+	</div>
+</body>
+</html>
