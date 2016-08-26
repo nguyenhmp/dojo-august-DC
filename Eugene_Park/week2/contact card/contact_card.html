@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name='description' content="jQuery assignment">
+	<title>Contact Card</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('form').submit(function(){
+				$('#contacts').append('<div class=\'people\'><h1 class=\'front\'>' + $('#first_name').val() + ' ' + $('#last_name').val() + '</h1><span class=\'desc front\'>Click for description!</span><p class=\'back\'>' + $('#description').val() + '</p></div>');
+				return false;
+			});
+			$(document).on('click', '.desc', function(){
+				$(this).parent().children('.front').css('visibility', 'hidden');
+				$(this).parent().children('.back').css('visibility', 'visible');
+			});
+			$(document).on('click', '.back', function(){
+				$(this).parent().children('.back').css('visibility', 'hidden');
+				$(this).parent().children('.front').css('visibility', 'visible');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="form">
+		<form>
+			First name: <input id="first_name" type="text" name="first_name" value=""><br>
+			Last name: <input id="last_name" type="text" name="last_name" value=""><br>
+			Description:<br><textarea id="description">Enter description</textarea><br>
+			<input type="submit" name="submit" value="Add User">
+		</form>
+	</div>
+	<div id="contacts">
+		<div class="people">
+			<h1 class="front">John Doe</h1>
+			<span class="desc front">Click for descriptoin!</span>
+			<p class="back">
+				this description should somehow end up in the top right;
+			</p>
+		</div>
+	</div>
+</body>
+</html>
