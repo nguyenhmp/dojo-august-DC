@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+
+		$(document).ready(function() {
+
+			$('input[name="ok"]').hide();
+
+			$('input[value="lat_long"]').focus(function() {
+				$('input[name="ok"]').show();
+			})
+
+			$('input[value="city_name"], input[value="zip"], input[value="city_id"]').click(function() {
+				$('input[name="ok"]').hide();
+			})
+
+			$('form').submit(function() {
+				var customUrl = "http://api.openweathermap.org/data/2.5/weather?";
+				if($('input[name="type"]:checked').val() == 'lat_long') {
+					customUrl += "lat=" + $('input[value="lat"]').val() + '&lon=' + $('input[value="lon"]').val() + "&appid=ed24a8261ac156229dd4615bd3a3e260";
+					console.log(customUrl);
+				}else {
+					customUrl += $('input[name="type"]:checked').attr('sky') + $('input[name="city"]').val() + "&appid=ed24a8261ac156229dd4615bd3a3e260"
+				}
+
+				$.ajax({
+					url: customUrl,
+					method: "GET"
+				}).done(function(navigator) {
+					console.log(navigator);
+					$('#loc').text('Location: ' + (navigator.name) + ' ' + (navigator.sys.country))
+					$('#desc').text('Description: ' + (navigator.weather[0].main))
+					$('#temp').text('Temperature: ' + (navigator.main.temp));
+					$('#wind').text('Wind Speed: ' + (navigator.wind.speed))
+				});
+				return false;
+			})
+		});
+
+		</script>
+	</head>
+	<body>
+		<h1>Get the weather!</h1>
+		<form>
+			<input type="radio" name="type" value="city_name" sky="q=">City Name
+			
+			<input type="radio" name="type" value="lat_long">Latitude/Longitude
+			<input type="radio" name="type" value="zip" sky="zip=">Zip Code
+			<input type="radio" name="type" value="city_id" sky="id=">City ID<br>
+			<label>City: </label><input type="text" name="city" id="cityid"><br>
+			<label>Latitude</label><input type="text" name="ok" value="lat"><label>Longitude</label><input type="text" name="ok" value="lon"><br>
+			<input type="submit">
+		</form>
+		<h3 id="loc">Location: </h3>
+		<h3 id="desc">Description: </h3>
+		<h3 id="temp">Temperature: </h3>
+		<h3 id="wind">Wind Speed: </h3>
+	</body>
+</html>
