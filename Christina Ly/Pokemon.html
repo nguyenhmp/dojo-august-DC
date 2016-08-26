@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pokemon</title>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js">
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function(images){
+				for(var i=1; i<152; i++){
+					$("#pokemon").append("<img src='http://pokeapi.co/media/img/"+i+".png'>");
+				}
+			});
+		</script>
+	</head>
+	<body>
+	<div id="pokemon"></div>
+	</body>
+</html>

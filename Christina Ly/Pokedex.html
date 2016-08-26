@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pokedex</title>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js">
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function(images){
+				for(var i=1; i<152; i++){
+					$("#pokemon").append("<img src='http://pokeapi.co/media/img/"+i+".png' data-pokenumber="+i+">")
+				}
+				$("#pokedex").hide()
+				$("img").click(function(){
+					$("#name").html(" ");
+					$("#types").html(" ");
+					$("#height").html(" ");
+					$("#weight").html(" ");
+					var pokemonurl=$(this).attr("src")
+					$("#pokedex").show()
+					$.ajax({
+						url: "http://pokeapi.co/api/v1/pokemon/"+$(this).data("pokenumber")+"/",
+						method: "GET",
+					}).done(function(info){
+						console.log(info);
+						$("#name").append(info.name)
+						for(var i=0; i<info.types.length;i++){
+						$("#types").append("<li>"+info.types[i].name + "</li>")}
+						$("#height").append(info.height)
+						$("#weight").append(info.weight)
+						$("#pokedeximage").attr("src", pokemonurl)
+					});
+				})
+				return false;	
+			});
+		</script>
+		<style type="text/css">
+			#pokemon{
+				width:750px;
+				display:inline-block;
+			}
+			#pokedex{
+				width:200px;
+				display:inline-block;
+				border:10px solid red;
+				vertical-align: top;
+			}
+			h3{
+				margin-left:10px;
+				margin-bottom:5px;
+			}
+			#name{
+				font-size: 30px;
+				text-align: center;
+				margin-left:5px;
+			}
+			p{
+				margin-left:10px;
+				margin-top:0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pokemon"></div>
+		<div id="pokedex">
+			<h3 id="name"></h3>
+			<img id="pokedeximage"></img>
+			<h3>Types</h3>
+			<ul id="types"></ul>
+			<h3>Height</h3>
+			<p id="height"></p>
+			<h3>Weight</h3>
+			<p id="weight"> </p>
+		</div>
+	</body>
+</html>

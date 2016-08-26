@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Weather App</title>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js">
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#lat, #long").hide();
+				$('input[name=Search]').click(function(){
+					var selected= $('input[name=Search]:checked').val();
+					if(selected=="lat_long"){
+						$("#lat, #long").show();
+						$("#city").hide();
+					}
+					else{
+						$("#city").show();
+						$("#lat, #long").hide();
+					}
+				});
+				$('form').submit(function(){
+					$(".info").html(" ");
+					var selected= $('input[name=Search]:checked').val();
+					var query="http://api.openweathermap.org/data/2.5/weather?";
+					if(selected=="id"){
+						query+="id="+$('#city').val()+"&appid=38ed520286ab541243ddee4e7fe64fab";
+					}
+					else if(selected=="q"){
+						query+="q="+$('#city').val()+"&appid=38ed520286ab541243ddee4e7fe64fab"; 
+					}
+					else if(selected=="zipcode"){
+						query+="zip="+$('#city').val()+",us&appid=38ed520286ab541243ddee4e7fe64fab";
+					}
+					else if(selected=="lat_long"){
+						query+="lat="+$('#lat').val()+"&lon="+$('#long').val()+"&appid=38ed520286ab541243ddee4e7fe64fab";
+					}
+					console.log(query);
+					$.ajax({
+					  url: query,
+					  method: "GET",
+					}).done(function(anything) {
+						console.log(anything);
+						$('#locinfo').append(anything.name);
+						$('#tempinfo').append("Temperature: " +anything.main.temp+" K");
+						$('#desinfo').append("Description: "+anything.weather[0].description);
+						$('#speedinfo').append("Wind Speed: "+anything.wind.speed+"  Knot")
+						$(".txt").val(" ");
+					});
+					return false;
+				})
+			});
+		</script>
+		<style>
+			#title{
+				font-size:80px;
+				background-color: #F2F9FC;
+				margin-top:0px;
+				border-bottom:1px solid black;
+			}
+			#id{
+				margin-left:59px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 id="title">Weather App</h1>
+		<form>
+			<input type="radio" value="q" id="name" name="Search">City Name 
+			<input type="radio" value="id" id="id" name="Search">City ID <br>
+			<input type="radio" value="lat_long" id="latlong" name="Search">Latitude/Longitude 
+			<input type="radio" value="zipcode" id="zip" name="Search">Zip code <br>
+			<input type="text" class="txt" id="city" placeholder="City Info"></input><br>
+			<input type="text" class="txt" id="lat" placeholder="Latitude"></input>
+			<input type="text" class="txt" id="long" placeholder="Longitude"></input>
+			<button type="submit">Search Weather</button>
+		</form>
+		<h1 class="info" id="locinfo"></h1>
+		<h3 class="info" id="tempinfo"></h3>
+		<h3 class="info" id="desinfo"></h3>
+		<h3 class="info" id="speedinfo"></h3>
+	</body>
+</html>	
