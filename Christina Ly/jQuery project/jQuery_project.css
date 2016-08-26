@@ -1,0 +1,51 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	background-color: black;
+}
+#Arena{
+	width:280px;
+	height:165px;
+	border-radius: 10px;
+	background-color: rgba(100,100,100,.8);
+	text-align: center;
+}
+h1{
+	color: orange;
+	padding:40px 0px 20px;
+}
+button{
+	margin:2px;
+	border-radius: 5px;
+	padding:3px 3px 0px 3px;
+	border:1px solid black;
+}
+#Player{
+	width:280px;
+	height:135px;
+	border-radius: 10px;
+	background-color: rgba(100,100,100,.8);
+	text-align: center;
+}
+select{
+	margin:3px;
+}
+
+#playerimg1{
+	display: inline-block;
+	width:200px;
+	height:auto;
+	position:absolute;
+	left:200px;
+	top: 300px;
+}
+#playerimg2{
+	display:inline-block;
+	width:200px;
+	height:auto;
+	position:absolute;
+	right:200px;
+	top:300px;
+}

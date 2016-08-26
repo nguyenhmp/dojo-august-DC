@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="jQuery_project.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+		</script>
+		<script type="text/javascript">
+			$.fn.center = function () {
+   				this.css("position","absolute");
+			   	this.css("top", ( $(window).height() - this.height() ) / 2  + "px");
+			  	this.css("left", ( $(window).width() - this.width() ) / 2 + "px");
+			   	return this;
+			}
+			$(document).ready(function(){
+				$("#Player").hide();
+				$("#playerimg1").hide();
+				$("#playerimg2").hide();
+				$("#Player").center();
+				$('#Arena').center();
+				$("#beachbtn").click(function(){
+					$('body').css({'background-image': 'url("beach.jpg")', 'background-repeat': 'no-repeat', 'background-size': 'cover '});
+				})
+				$("#planetbtn").click(function(){
+					$('body').css({'background-image': 'url("calvinandhobbes.jpg")', 'background-repeat': 'no-repeat', 'background-size': 'cover '});
+				})
+				$("#dojobtn").click(function(){
+					$('body').css({'background-image': 'url("dojo.jpg")', 'background-repeat': 'no-repeat', 'background-size': 'cover '});
+				})
+				$("#forestbtn").click(function(){
+					$('body').css({'background-image': 'url("forest.jpg")', 'background-repeat': 'no-repeat', 'background-size': 'cover '});
+				})
+				$("#matrixbtn").click(function(){
+					$('body').css({'background-image': 'url("matrix.jpg")', 'background-repeat': 'no-repeat', 'background-size': 'cover '});
+				})
+				$("#snowbtn").click(function(){
+					$('body').css({'background-image': 'url("snow.jpg")', 'background-repeat': 'no-repeat', 'background-size': 'cover '});
+				})
+				$("button").click(function(){
+					$("#Arena").hide();
+					$("#Player").show();
+				})
+				$("#player1").change(function(){
+					$("#playerimg1").attr("src",$(this).val())
+					$("#playerimg1").show();
+				})
+				$("#player2").change(function(){
+					$("#playerimg2").attr("src",$(this).val())
+					$("#playerimg2").show();
+				})
+			});
+		</script>	
+		<title>
+		</title>
+	</head>
+	<body>
+		<div id="Arena">
+			<h1>Select Arena</h1>
+			<form>
+				<button id="beachbtn" type="button">Beach</button>
+				<button id="planetbtn" type="button">Planet</button>
+				<button id="dojobtn" type="button">Dojo</button><br>
+				<button id="forestbtn" type="button">Forest</button>
+				<button id="matrixbtn" type="button">Matrix</button>
+				<button id="snowbtn" type="button">Snow</button>
+			</form>
+		</div>
+		<div id="Player">
+			<h1>Select Players</h1>
+			<form>
+				<select name="Player" id="player1">
+					<option value="yellow.png">Yellow Ninja</option>
+					<option value="white.png">White Ninja</option>
+					<option value="black.png">Black Ninja</option>
+					<option value="green.png">Green Ninja</option>
+					<option value="red.png">Red Ninja</option>
+					<option value="leo.jpg">Leo Ninja</option>
+				</select>
+				<select name="Players" id="player2">
+					<option value="yellow.png">Yellow Ninja</option>
+					<option value="white.png">White Ninja</option>
+					<option value="black.png">Black Ninja</option>
+					<option value="green.png">Green Ninja</option>
+					<option value="red.png">Red Ninja</option>
+					<option value="leo.jpg">Leo Ninja</option>
+				</select>
+			</form>
+		</div>
+		<img id="playerimg1" src="white.png" alt="white ninja">
+		<img id="playerimg2" src="white.png" alt="white ninja">
+	</body>
+</html>

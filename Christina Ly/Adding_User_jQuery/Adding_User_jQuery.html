@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Adding a User with jQuery</title>
+		<link rel="stylesheet" text="text/css" href="Adding_User_jQuery.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("form").submit(function(){
+					$("#1").append("<p>"+ $("#f1").val()+"</p>")
+					$("#2").append("<p>"+ $("#f2").val()+"</p>")
+					$("#3").append("<p>"+ $("#f3").val()+"</p>")
+					$("#4").append("<p>"+ $("#f4").val()+"</p>")
+					$("#f1").val("")
+					$("#f2").val("")
+					$("#f3").val("")
+					$("#f4").val("")
+					return false;
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<table id="table">
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email Address</th>
+					<th>Contact #</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td id="1"></td>
+					<td id="2"></td>
+					<td id="3"></td>
+					<td id="4"></td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="submit">
+			<h1>Add User</h1>
+			<form>
+				<p>First Name: <input type="text" placeholder="First Name" id="f1"></input></p>
+				<p>Last Name: <input type="text" placeholder="Last Name" id="f2"></input></p>
+				<p>Email Address: <input type="text" placeholder="Email Address" id="f3"></input></p>
+				<p>Contact No.: <input type="text" placeholder="Phone #" id="f4"></input></p>
+				<button type="submit">Add User</button>			
+			</form>
+		</div>
+	</body>
+</html>
