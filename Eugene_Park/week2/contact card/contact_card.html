@@ -9,7 +9,10 @@
 	<script>
 		$(document).ready(function(){
 			$('form').submit(function(){
-				$('#contacts').append('<div class=\'people\'><h1 class=\'front\'>' + $('#first_name').val() + ' ' + $('#last_name').val() + '</h1><span class=\'desc front\'>Click for description!</span><p class=\'back\'>' + $('#description').val() + '</p></div>');
+				$('#contacts').append("<div class= 'people'><h1 class= 'front'>" + 
+					$('#first_name').val() + ' ' + $('#last_name').val() + "</h1>" + 
+					"<span class= 'desc front'>Click for description!</span>" + 
+					"<p class= 'back'>" + $('#description').val() + '</p></div>');
 				return false;
 			});
 			$(document).on('click', '.desc', function(){

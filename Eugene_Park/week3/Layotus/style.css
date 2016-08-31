@@ -1,0 +1,40 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	width: 90%;
+	margin: auto;
+}
+#header {
+	width: 100%;
+	background-color: #cccccc;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+ul {
+	list-style: none;
+	margin-bottom: 20px;
+}
+li {
+	display: inline-block;
+	background-color: #cccccc;
+	border: 1px solid black;
+	padding: 5px;
+}
+#ipsums {
+	width: 100%;
+}
+.colum {
+	display: inline-block;
+	vertical-align: top;
+	padding-right: 5px;
+}
+@media only screen and (max-width: 900px) {
+	#nav_bar { display: none; }
+	.four-s { width: 31%; }
+	.twelve-s { width: 100%; }
+}
+@media only screen and (min-width: 901px) {
+	.three-l { width: 23.5%; }
+}
