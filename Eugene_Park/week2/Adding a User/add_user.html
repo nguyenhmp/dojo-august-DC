@@ -10,7 +10,10 @@
 		$(document).ready(function(){
 			$('#form').submit(function(){
 				// console.log('submitting')
-				$('#table table').append('<tr><th>' + $('#first_name').val() + '</th><th>'+ $('#last_name').val() + '</th><th>' + $('#email').val() + '</th><th>' + $('#contact_no').val() + '</th></tr>');
+				$('#table table').append('<tr><th>' + $('#first_name').val() + '</th>' + 
+					'<th>'+ $('#last_name').val() + '</th>' + 
+					'<th>' + $('#email').val() + '</th>' +
+					'<th>' + $('#contact_no').val() + '</th></tr>');
 				return false;
 			});
 		});
