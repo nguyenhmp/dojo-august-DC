@@ -32,6 +32,13 @@
 		height:18px;
 		position:absolute;
 	}
+	.explosion{
+		background: url('1942.gif');
+		background-position: -6px -398px; 
+		width: 18px;
+		height: 18px;
+		position:absolute;
+	}
 	#score{
 		position:absolute;
 		border:10px solid red;
@@ -48,44 +55,70 @@
 	<div id='container'>
 		<div id='hero'></div>
 		<div id='enemies'></div>
-		<div id='bullets'>
-			<div class='bullet' style='top:150px; left:200px;'></div>
-			<div class='bullet' style='top:250px; left:200px;'></div>
-			<div class='bullet' style='top:350px; left:200px;'></div>
-			<div class='bullet' style='top:450px; left:200px;'></div>
-		</div>	
+		<div id='bullets'></div>
+		<div id='explosion'></div>	
 	</div>
-
-	<div id='score'>100</div>
+	<div id='score'></div>
 
 
 <script>
 var hero = {
 	x:300,
-	y:500
+	y:500,
+	alive:0
 }
-var enemies = [{x:100,y:50},{x:200,y:50},{x:300,y:50},{x:400,y:50},{x:500,y:50},{x:600,y:50},{x:700,y:50},{x:800,y:50},{x:900,y:50}]
+var enemies = [{x:100,y:50},{x:200,y:50},{x:300,y:50},{x:400,y:50},{x:500,y:50},{x:600,y:50},{x:700,y:50},{x:800,y:50},{x:900,y:50}];
+var bullets = [];
+var score = 0;
+var explosion = [];
+
 function displayhero(){
 	document.getElementById('hero').style['top'] = hero.y +"px";
 	document.getElementById('hero').style['left'] = hero.x + "px";
 }
-displayhero();
+
 function moveenemies(){
 	for(var i = 0; i<enemies.length; i++){
 		enemies[i].y+=10;
 		if(enemies[i].y>549){
 			enemies[i].y = 0;
-			enemies[i].x = Math.random()*990+1
+			enemies[i].x = Math.random()*990+1;
 		}
 	}
 }
-moveenemies();
+
 function gameloop(){
 	displayhero();
 	moveenemies();
 	displayenemies();
+	displaybullets();
+	movebullets();
+	detectcollision();
+	displayscore();
+	displayexplosion();
+	clearexplosion();
 }
-setInterval(gameloop,50);
+
+var game = setInterval(gameloop,100);
+
+function displaybullets(){
+	var output ='';
+	for(var i = 0; i<bullets.length; i++){
+		output += "<div class ='bullet' style='top:"+bullets[i].y+"px; left:"+bullets[i].x+"px;'></div>";
+	}
+	document.getElementById('bullets').innerHTML = output;
+}
+
+function movebullets(){
+	for(var i =0; i<bullets.length; i++){
+		bullets[i].y-=10;
+		if(bullets[i].y<0){
+			bullets[i]=bullets[bullets.length-1];
+			bullets.pop();
+		}
+	}
+}
+
 document.onkeydown = function(e) {
 	if(e.keyCode == 37){
 		hero.x-=10;
@@ -99,16 +132,67 @@ document.onkeydown = function(e) {
 	else if(e.keyCode == 40){
 		hero.y+=10;
 	}
-displayhero();
+	else if(e.keyCode == 32){
+		bullets.push({x:hero.x+5, y:hero.y-10});
+	}
 }
+
 function displayenemies(){
 	var output = ''
 	for(var i =0; i<enemies.length; i++){
 		output+= "<div class='enemy' style='top:"+enemies[i].y+"px; left:"+enemies[i].x+"px;'></div>";
 	}
+	if(enemies.length == 0 || hero.alive ==1){
+			alert('GAMEOVER');
+			clearInterval(game);
+	}
 	document.getElementById('enemies').innerHTML = output;
 }
-displayenemies();
+
+function detectcollision(){
+	for(var i = 0; i<bullets.length; i++){
+		for(var k = 0; k<enemies.length; k++){
+			if (Math.abs(bullets[i].x - (enemies[k].x+8))<14 &&Math.abs(enemies[k].y - bullets[i].y)<14){
+				bullets[i]= bullets[bullets.length-1];
+				bullets.pop();
+				score +=10;
+				explosion.push({x:enemies[k].x+5, y:enemies[k].y, age:0});
+				enemies[k]= enemies[enemies.length-1];
+				enemies.pop();
+				break;
+			}
+		}
+	}
+	for(var k = 0; k<enemies.length; k++){
+		if(Math.abs(hero.x - (enemies[k].x+8))<15 && Math.abs(hero.y - enemies[k].y)<15){
+				explosion.push({x:hero.x, y:hero.y, age:0});
+				hero.alive = 1;
+		}
+	}
+}
+
+function displayscore(){
+	document.getElementById('score').innerHTML = score;
+}
+
+function displayexplosion(){
+	var output = '';
+	for(var i = 0; i<explosion.length; i++){
+		output += "<div class ='explosion' style='top:"+explosion[i].y+"px; left:"+explosion[i].x+"px;'></div>";
+		explosion[i].age++;
+	}
+	document.getElementById('explosion').innerHTML = output;
+}
+
+function clearexplosion(){
+	for(var i =0; i<explosion.length; i++){
+		if(explosion[i].age>2){
+			explosion[i]=explosion[explosion.length-1];
+			explosion.pop();
+		}
+	}
+}
+
 </script>
 
 </body>
