@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pacman</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<style type="text/css">
+			body{
+				background-color: black;
+				margin:0px;
+			}
+			div#world{
+				width:500px;
+				position:relative;
+				margin:0px;
+			}
+			div.row{
+				margin:0px;
+				padding:0px;
+				height: 30px;
+			}
+			div.row div{
+				width:30px;
+				height:30px;
+				display:inline-block;
+				margin:0px;
+			}
+			div.brick{
+				display:inline-block;
+				background-color: blue;
+
+			}
+			div.coin{
+				display:inline-block;
+				background-color: black;
+				background-image: url('dot.png'); 
+				background-size: 5px;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			div.empty{
+				background-color:black;
+
+			}
+			div#pacman{
+				display:inline-block;
+				background-color: black;
+				background-image: url('pacman.gif'); 
+				background-size: 30px;
+				background-repeat: no-repeat;
+				background-position: center;
+				position:absolute;
+				width:30px;
+				height:30px;
+				-moz-transform: scaleX(-1);
+				-o-transform: scaleX(-1);
+				-webkit-transform: scaleX(-1);
+				transform: scaleX(-1);
+				filter: FlipH;
+				-ms-filter: "FlipH";
+			}
+			div#score{
+				width:100px;
+				height:50px;
+				background-color: black;
+				border:1px solid white;
+				color:white;
+				display:inline-block;
+				position: absolute;
+				top:10px;
+				left:500px;
+				text-align: center;
+				padding:10px;
+			}
+			div.cherry{
+				background-color: black;
+				background-image: url('cherry.png'); 
+				background-size: 30px;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="world"></div>
+		<div id="pacman"></div>	
+		<div id="score">Score: </div>
+		<script type="text/javascript">
+			var map=[
+				[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+				[1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+				[1,0,1,1,0,1,1,0,1,0,1,1,0,1,0,1],
+				[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+				[1,1,0,1,0,1,1,2,1,1,0,1,0,1,0,1],
+				[0,0,0,1,0,1,2,2,2,1,0,1,0,0,0,0],
+				[1,0,0,0,0,1,2,2,2,1,0,1,1,1,0,1],
+				[1,0,1,1,0,1,1,2,1,1,0,0,0,0,0,1],
+				[1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1],
+				[1,0,1,1,1,0,0,1,1,0,0,1,0,0,0,1],
+				[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+			];
+			var pacman = {
+				x: 1,
+				y: 1
+			};
+			var score = 0;
+			var direction = "none";
+			var game = setInterval(displaymap,200);
+			function displaymap(){
+				var output= '';
+				var gameover = true;
+				for(var i=0; i<map.length; i++){
+					output+="\n<div class='row'>\n";
+					for(var k=0; k<map[i].length; k++){
+						if(map[i][k]==1){
+							output= output + "<div class='brick'></div>";
+						}
+						if(map[i][k]==0){
+							output=output + "<div class='coin'></div>";
+							gameover = false;
+						}
+						if(map[i][k]==2){
+							output=output +"<div class='empty'></div>";
+						}
+						if(map[i][k]==3){
+							output=output +"<div class='cherry'></div>";
+						}
+					}
+					output+= "\n</div>";
+				}
+				if(gameover){
+					alert("GAMEOVER");
+					clearInterval(game);
+				}
+				displaycherry();
+				move();
+				displaypacman();
+				displayscore();
+				document.getElementById('world').innerHTML = output;	
+			}
+			function displaycherry(){
+				if(score % 270 == 0){
+					map[8][7] = 3;
+				}
+				if(map[pacman.y][pacman.x]==3){
+					map[pacman.y][pacman.x]=2;
+					score+=100;
+				}
+			}
+			function move(){
+				if(direction=="up" && map[pacman.y-1][pacman.x] != 1){
+					pacman.y--
+				}
+				if(direction == "down" && map[pacman.y+1][pacman.x] !=1){
+					pacman.y++
+				}
+				if(direction == "right" && map[pacman.y][pacman.x+1] != 1){
+					pacman.x++
+				}
+				if(direction == "left" && map[pacman.y][pacman.x-1] !=1){
+					pacman.x--
+				}
+				if(pacman.x<0){
+					pacman.x=map[0].length-1;
+				}
+				if(pacman.x>map[0].length-1){
+					pacman.x=0;
+				}
+				if(map[pacman.y][pacman.x]==0){
+					map[pacman.y][pacman.x]=2;
+					score+=10;
+				}
+			}
+			function displaypacman(){
+				document.getElementById('pacman').style.left = pacman.x*30 +"px";
+				document.getElementById('pacman').style.top = pacman.y*30+"px";
+				}
+			function displayscore(){
+				document.getElementById('score').innerHTML = "Score: "+score;
+			}
+			document.onkeydown = function(e){
+				if(e.keyCode == 38 && map[pacman.y-1][pacman.x] != 1){
+					direction ="up"
+					$("#pacman").css("transform","rotate(90deg)")
+				}
+				if(e.keyCode ==40 && map[pacman.y+1][pacman.x] != 1){
+					direction ="down"
+					$("#pacman").css("transform","rotate(-90deg)")
+				}
+				if(e.keyCode == 39 && map[pacman.y][pacman.x+1] != 1){
+					direction = "right"
+					$("#pacman").css("transform","scaleX(-1)")
+				}
+				if(e.keyCode ==37 && map[pacman.y][pacman.x-1] !=1){
+					direction = "left"
+					$("#pacman").css("transform","scaleX(1)")
+				}
+			}	
+		</script>
+	</div>
+	</body>
+</html>
