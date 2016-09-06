@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="jQuery assignment">
+	<title>Disappearing Ninja</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.ninja').click(function(){
+				$(this).css('visibility', 'hidden');
+			});
+			$('#restore').click(function(){
+				$('.ninja').css('visibility', 'visible');
+			});
+		});		
+	</script>
+</head>
+<body>
+	<div class="row">
+		<img class="ninja" src="http://images.goodsmile.info/cgm/images/product/20140423/4392/28715/large/d9f34887dd49aea9da76a3e50a1d02f1.jpg" alt="ninja">
+		<img class="ninja" src="http://images.goodsmile.info/cgm/images/product/20140423/4392/28715/large/d9f34887dd49aea9da76a3e50a1d02f1.jpg" alt="ninja">
+		<img class="ninja" src="http://images.goodsmile.info/cgm/images/product/20140423/4392/28715/large/d9f34887dd49aea9da76a3e50a1d02f1.jpg" alt="ninja">
+		<img class="ninja" src="http://images.goodsmile.info/cgm/images/product/20140423/4392/28715/large/d9f34887dd49aea9da76a3e50a1d02f1.jpg" alt="ninja">
+	</div>
+	<div class="row">
+		<img class="ninja" src="http://images.goodsmile.info/cgm/images/product/20140423/4392/28715/large/d9f34887dd49aea9da76a3e50a1d02f1.jpg" alt="ninja">
+		<img class="ninja" src="http://images.goodsmile.info/cgm/images/product/20140423/4392/28715/large/d9f34887dd49aea9da76a3e50a1d02f1.jpg" alt="ninja">
+		<img class="ninja" src="http://images.goodsmile.info/cgm/images/product/20140423/4392/28715/large/d9f34887dd49aea9da76a3e50a1d02f1.jpg" alt="ninja">
+		<img class="ninja" src="http://images.goodsmile.info/cgm/images/product/20140423/4392/28715/large/d9f34887dd49aea9da76a3e50a1d02f1.jpg" alt="ninja">
+	</div>
+	<input id="restore" type="button" name="Restore" value="Restore">
+</body>
+</html>

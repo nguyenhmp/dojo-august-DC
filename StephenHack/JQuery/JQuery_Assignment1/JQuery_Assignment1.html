@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<title>jQuery demo!</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(".cat_image").click(function(){
+					alert("I am purrfect");
+				})
+				$("#name").focus(function(){
+					alert(".focus called");
+				})
+				$("#button1").click(function(){
+					$("h4").addClass("intro");
+				})
+				
+				$("$button_val").click(function(){
+					$("#button_val").val() = ("Val function");
+					alert("#button_val");
+
+				})
+
+				$("$button_val").click(function(){
+					$("#button_text").text = ("text function");
+					alert("");
+
+				})
+
+				$()
+
+
+				// var cat_response = $("input:radio[response]:checked").val();
+
+				
+				
+
+
+			});
+		</script>
+	</head>
+	<body>
+		<h4>Pet the Cat! (.click)</h4>
+		<img src="https://i.ytimg.com/vi/abVsdp3i34k/maxresdefault.jpg" class="cat_image">
+		<h4 id="sentence1">My Name is Woodson!! My fur is brown and fluffy. What is your name? (.focus)</h4>
+				<input type="text" id="name"/><br>
+				<button id="button1">Turn H4s Purple By Adding Class</button><br>
+				<button id="button_val">text</button><br>
+				<button></button>
+
+		<img src="http://www.windowsmode.com/wp-content/uploads/2015/08/HD-Dog-wallpaper.jpg" class="dog_image">
+		<h2>I can't hear you small one. What was that? My name is Harry. </h2>
+		<h4>Woodson's response to Harry: </h4>
+		<input type="radio" name="response" value="Meow">MEOW!!<br>
+		<input type="radio" name="response" value="Slaps">Slaps Harry Angerly!<br>
+
+		<button id="button_val">val button</button><br>
+		<button id="button_text">text button</button><br>
+		<h2 id="h2">.text</h2>
+		<h2>.attr</h2>
+		<h2>.html</h2>
+		<h2>.data</h2>
+		<h2>.before</h2>
+		<h2>.after</h2>
+		<h2>.append</h2>
+		<h2>.show</h2>
+		<h2>.hide</h2>
+		<h2>.toggle</h2>
+		<h2>.fadein<h2>
+		<h2>.fadeout</h2>
+		<h2>.slideDown</h2>
+		<h2>.SlideUp</h2>
+		<h2>.slideToggle</h2>
+
+	</body>
+</html>
+
+

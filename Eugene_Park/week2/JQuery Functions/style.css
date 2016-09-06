@@ -1,0 +1,18 @@
+.red {
+	color: red;
+}
+.black {
+	color: black;
+}
+.buttons {
+	display: inline-block;
+	vertical-align: bottom;
+	margin-right: 100px;
+}
+.demo {
+	display: inline-block;
+	vertical-align: bottom;
+}
+.textbox {
+	background-color: white;
+}

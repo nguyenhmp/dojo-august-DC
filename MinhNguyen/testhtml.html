@@ -3,21 +3,56 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="main.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js">
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+		  url: "http://api.openweathermap.org/data/2.5/weather?q=tysonscorner&appid=38ed520286ab541243ddee4e7fe64fab",
+		  method: "GET",
+		}).done(function(anything) {
+		  console.log("object:", anything)
+		  console.log("weather", anything.weather)
+		  console.log("weather[0]", anything.weather[0])
+		  console.log("weather[0] description", anything.weather[0].description)
+		});
+	})
+	console.log("document is not ready here")
+
+
+
+
+	</script>
 </head>
 <body>
+	<form>
+		<input type="text" name="" id="testinginput">
+	</form>
 	<div class="one">1</div>
 	<div class="two">2</div>
 	<div class="three">3</div>
 	<div class="four">4</div>
-	<div class="five" id="five">5</div>
+	<div class="five" id="five"> <p>My p tag</p>5</div>
+
 </body>
 	<script type="text/javascript">
+		// $('#five').slideUp()
 	// console.log(typeof(document))
-	document.getElementById("five").onclick = function(){
-		alert("just added my first event listener")
-	}
+	console.log(document.getElementById("five"))
 	// document.getElementById('five').className = "testing vanilla javascript"
+	document.getElementById('five').onclick = function(){
 
+	}
+	document.getElementById('five').onmouseenter = function(){
+
+	}
+
+	$('#five').click(function(){
+		
+	})
+	$('#five').hover(function(){
+
+	})
 	// console.log(document)
 	//Write javascript to add a class to an element.
 	</script>

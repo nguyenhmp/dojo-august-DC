@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<title>Ninja by Scott and Steve</title>
+		<link rel="stylesheet" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+
+				$('.player1').hide();
+				$('.player2').hide();
+				$('#player1').change(function() {
+					var imageName = $(this).val(); 
+					switch (imageName) {
+						case 'yellow.png':
+							$('.player1').hide();
+							$('#yellow_ninja1').show();
+							break;
+						case 'white.png':
+							$('.player1').hide();
+							$('#white_ninja1').show();
+							break;
+						case 'red.png':
+							$('.player1').hide();
+							$('#red_ninja1').show();
+							break;
+						case 'leo.jpg':
+							$('.player1').hide();
+							$('#leo_ninja1').show();
+							break
+						case 'black.png':
+							$('.player1').hide();
+							$('#black_ninja1').show();
+							break
+						case 'green.png':
+							$('.player1').hide();
+							$('#green_ninja1').show();
+							break
+						default:
+							console.log(imageName)
+					}
+				});
+				$('#player2').change(function() {
+					var imageName = $(this).val(); 
+					switch (imageName) {
+						case 'yellow.png':
+							$('.player2').hide();
+							$('#yellow_ninja2').show();
+							break;
+						case 'white.png':
+							$('.player2').hide();
+							$('#white_ninja2').show();
+							break;
+						case 'red.png':
+							$('.player2').hide();
+							$('#red_ninja2').show();
+							break;
+						case 'leo.jpg':
+							$('.player2').hide();
+							$('#leo_ninja2').show();
+							break
+						case 'black.png':
+							$('.player2').hide();
+							$('#black_ninja2').show();
+							break
+						case 'green.png':
+							$('.player2').hide();
+							$('#green_ninja2').show();
+							break
+						default:
+							console.log(imageName)
+					}
+				});
+				// $('#player1': 'yellow.png').click(function(){
+				// 	$('#yellow_ninja1').show();
+				// })
+				$('button').hover(function(){
+					if ($(this).text() == 'planet') {
+						$('#wrapper').css({'background-image': 'url(calvinandhobbes.jpg)', 'background-repeat': 'no-repeat', 'background-size': 'cover'});
+					} else {
+						$('#wrapper').css({'background-image': 'url(' + $(this).text() + '.jpg)', 'background-repeat': 'no-repeat', 'background-size': 'cover'});
+					}
+				}  , function() {
+					$('#wrapper').css('background-image', 'none');
+					$('#wrapper').css('background-color', 'black');
+				})
+				
+
+
+
+				$('img').click(function(){
+					console.log(this)
+				})
+			});
+		</script>
+	</head>
+	<body>
+		<img src="yellow.png" id="1">
+		<img src="yellow.png"  id="2">
+		<img src="yellow.png"  id="3">
+		<img src="yellow.png"  id="4">
+		<img src="yellow.png"  id="5">
+		<div id="wrapper">
+			<div id ="select_area">
+				<h1>Select Arena / Players</h1>
+				<button>beach</button>
+				<button id= "planet">planet</button>
+				<button>dojo</button><br>
+				<button>forest</button>
+				<button>matrix</button>
+				<button>snow</button><br><br>
+				<select id="player1">
+					<option value="yellow.png">Yellow Ninja</option>
+					<option value="white.png">White Ninja</option>
+					<option value="black.png">Black Ninja</option>
+					<option value="green.png">Green Ninja</option>
+					<option value="red.png">Red Ninja</option>
+					<option value="leo.jpg">Leo Ninja</option>
+				</select>
+				<select id="player2">
+					<option value="yellow.png">Yellow Ninja</option>
+					<option value="white.png">White Ninja</option>
+					<option value="black.png">Black Ninja</option>
+					<option value="green.png">Green Ninja</option>
+					<option value="red.png">Red Ninja</option>
+					<option value="leo.jpg">Leo Ninja</option>
+				</select>
+			</div>
+			<img src="white.png" id="white_ninja1" class="player1">
+			<img src="white.png" id="white_ninja2" class="player2">
+			<img src="yellow.png" id="yellow_ninja1" class="player1">
+			<img src="yellow.png" id="yellow_ninja2" class="player2">>
+			<img src="red.png" id="red_ninja1" class="player1"> 
+			<img src="red.png" id="red_ninja2" class="player2">>
+			<img src="green.png" id="green_ninja1" class="player1">
+			<img src="green.png" id="green_ninja2" class="player2">>
+			<img src="leo.jpg" id="leo_ninja1" class="player1">
+			<img src="leo.jpg" id="leo_ninja2" class="player2">>
+			<img src="black.png" id="black_ninja1" class="player1">
+			<img src="black.png" id="black_ninja2" class="player2">>
+		</div>
+	</body>
+</html>
+
+

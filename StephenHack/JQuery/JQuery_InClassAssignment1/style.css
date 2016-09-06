@@ -1,0 +1,32 @@
+#wrapper {
+	height: 1100px;
+	width: 1400px;
+	background-color: black;
+	display: inline-block;
+}
+
+#select_area {
+	height: 200px;
+	width: 300px;
+	background-color: rgba(100, 100, 100, .8);
+	margin: auto;
+	margin-top: 330px;
+	border-radius: 10px;
+}
+
+.player1 {
+	height: 50px;
+	width: 100px;
+	display: inline-block;
+	position: absolute;
+	left: 0px;
+
+}
+
+.player2 {
+	height: 200px;
+	width: 300px;
+	display: inline-block;
+	position: absolute;
+	left:1000px;
+}

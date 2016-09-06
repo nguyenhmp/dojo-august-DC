@@ -1,0 +1,22 @@
+h1 {
+	text-align: center;
+}
+
+h4 {
+	display: inline-block;
+}
+
+input {
+	margin-right: 50px;
+	display: inline-block;
+}
+
+input[type="submit"] {
+	display: block;
+	margin: auto;
+	margin-top: 200px;
+}
+
+form {
+	text-align: center;
+}

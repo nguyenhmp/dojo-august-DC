@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="JQuery Functions" />
+	<title>JQuery Functions</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="jquery-3.1.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#addClass').click(function(){
+				$('#addClass_html_text h1').addClass('red');
+			});
+			$('#changeHtml').click(function(){
+				$('#addClass_html_text h1').html('Is this <span class=\'black\'>Black?</span>');
+			});
+			$('#changeText').click(function(){
+				$('#addClass_html_text h1').text('Probably not Black');
+			});
+			$('#focus_blur_val_data .textbox').focus(function(){
+				$(this).css('background-color', 'grey');
+			});
+			$('#focus_blur_val_data .textbox').blur(function(){
+				$(this).css('background-color', 'white');
+			});
+			$('#changeValue').click(function(){
+				$('#text_box_1').val('Value');
+			});
+			$('#changeData').click(function(){
+				$('#text_box_2').data('textdata', 'Data');
+				$('#text_box_2').val($('#text_box_2').data('textdata'));
+			});
+			$('#addBefore').click(function(){
+				$('#before_after_append h1').before('before');
+			});
+			$('#addAfter').click(function(){
+				$('#before_after_append h1').after('after');
+			});
+			$('#append').click(function(){
+				$('#before_after_append h1').append(' appended');
+			});
+			$('#show').click(function(){
+				$('#show_hide_toggle h1').show();
+			});
+			$('#hide').click(function(){
+				$('#show_hide_toggle h1').hide();
+			});
+			$('#toggle').click(function(){
+				$('#show_hide_toggle h1').toggle();
+			});
+			$('#fadein').click(function(){
+				$('#fadein_fadeout h1').fadeIn();
+			});
+			$('#fadeout').click(function(){
+				$('#fadein_fadeout h1').fadeOut();
+			});
+			$('#sUp').click(function(){
+				$('#silde_up_down_toggle h1').slideUp();
+			});
+			$('#sDown').click(function(){
+				$('#silde_up_down_toggle h1').slideDown();
+			});
+			$('#sToggle').click(function(){
+				$('#silde_up_down_toggle h1').slideToggle();
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="addClass_html_text">
+		<div class="buttons">
+			<input id="addClass" class="button" type="button" name="addClass" value="AddClass"><br>
+			<input id="changeHtml" class="button" type="button" name="html" value="Change html"><br>
+			<input id="changeText" class="button" type="button" name="text" value="Change text">
+		</div>
+		<div class="demo">
+			<h1>This is Black</h1>
+			<p>Click buttons to add class 'red' or change heading/text of the header</p>
+		</div>
+	</div>
+	<hr>
+	<div id="focus_blur_val_data">
+		<div class="buttons">
+			<input id="changeValue" class="button" type="button" name="focus" value="Change Value"><br>
+			<input id="changeData" class="button" type="button" name="focus" value="Change Data">
+		</div>
+		<div class="demo">
+			<input id="text_box_1" class="textbox" type="text" name="blank1"><br>
+			<input id="text_box_2" class="textbox" type="text" name="blank2" value="text">
+			<p>
+				Focus on the text box to change the backgroud color<br>
+				Press the button to give value / change data to the text box
+			</p>
+		</div>
+	</div>
+	<hr>
+	<div id="before_after_append">
+		<div class="buttons">
+			<input id="addBefore" class="button" type="button" name="focus" value="Before"><br>
+			<input id="addAfter" class="button" type="button" name="focus" value="After"><br>
+			<input id="append" class="button" type="button" name="focus" value="Append">
+		</div>
+		<div class="demo">
+			<h1>Origin</h1>
+			<p>Click buttons to add before/after to the header or append a new paragraph</p>
+		</div>
+	</div>
+	<hr>
+	<div id="show_hide_toggle">
+		<div class="buttons">
+			<input id="show" class="button" type="button" name="focus" value="Show"><br>
+			<input id="hide" class="button" type="button" name="focus" value="Hide"><br>
+			<input id="toggle" class="button" type="button" name="focus" value="Toggle">
+		</div>
+		<div class="demo">
+			<h1>Now you see me</h1>
+			<p>Click buttons to show/hide or toggle between</p>
+		</div>
+	</div>
+	<hr>
+	<div id="fadein_fadeout">
+		<div class="buttons">
+			<input id="fadein" class="button" type="button" name="focus" value="Fade In"><br>
+			<input id="fadeout" class="button" type="button" name="focus" value="Fade Out">
+		</div>
+		<div class="demo">
+			<h1>Faaaaaaaadeeeee</h1>
+			<p>Click buttons to Fade in/out the heading</p>
+		</div>
+	</div>
+	<hr>
+	<div id="silde_up_down_toggle">
+		<div class="buttons">
+			<input id="sUp" class="button" type="button" name="focus" value="Up"><br>
+			<input id="sDown" class="button" type="button" name="focus" value="Down"><br>
+			<input id="sToggle" class="button" type="button" name="focus" value="Toggle">
+		</div>
+		<div class="demo">
+			<h1>Silding for days</h1>
+			<p>Click buttons to slide up/down or toggle between</p>
+		</div>
+	</div>
+</body>
+</html>

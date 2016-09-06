@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="descriptoin" content="jQuery assignment">
+	<title>Hover In/Out</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script>
+		jQuery.fn.swap = function(){
+			$(this).attr('temp', $(this).attr('src'));
+			$(this).attr('src', $(this).attr('alt-src'));
+			$(this).attr('alt-src', $(this).attr('temp'));
+		}
+		$(document).ready(function(){
+			$('img').hover(function(){
+				$(this).swap();}, function(){
+				$(this).swap();
+			});
+		});		
+	</script>
+</head>
+<body>
+	<img src="ahri_front.png" alt-src='ahri_back.png' temp="">
+	<img src="ahri_front.png" alt-src='ahri_back.png' temp="">
+	<img src="ahri_front.png" alt-src='ahri_back.png' temp="">
+	<img src="ahri_front.png" alt-src='ahri_back.png' temp="">
+</body>
+</html>

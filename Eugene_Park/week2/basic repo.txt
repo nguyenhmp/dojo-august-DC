@@ -1,0 +1,9 @@
+Created new repo from GitHub webpage called basic_repo
+
+Made directory under C:\Users\Jin\Desktop\Coding Dojo called basic_repo
+
+added README.md file to basic_repo directory. 
+
+using cmd, initialized, added and then commited README.md.
+
+added remote origin called basic_repo and pushed commited changes to GitHub repository.

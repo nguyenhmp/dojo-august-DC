@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+
+			$(document).ready(function() {
+				/*
+				The pokemon images are placed by simply appending img tags,
+				as if ajax is used, a bunch of errors come to play.
+				*/
+				for (var i = 1; i < 152; i++) {
+					$('#pokemon').append('<img id="' + i
+						+ '" src="http://pokeapi.co/media/img/'
+						+ i + '.png">');
+				}
+				/*
+				This responds to the dynamically created images.
+				*/
+				$(document).on('click', 'img', function() {
+					$('ul').html('');
+					var id = $(this).attr('id')
+					$.ajax({
+						url: ('http://pokeapi.co/api/v1/pokemon/'
+							+ $(this).attr('id') + '/'),
+						method: "GET",
+						success: function(data) {
+							console.log(data);
+
+							$('#header').text(data.name);
+							$('#picture').attr('src', 'http://pokeapi.co/media/img/' + id + '.png');
+
+							for (var i = 0; i < data.types.length; i++) {
+								$('ul').append('<li>' + data.types[i].name + '</li>');
+							}
+
+							$('#h').text(data.height);
+							$('#w').text(data.weight);
+						}
+					})
+				})
+
+			})
+
+		</script>
+	</head>
+	<body>
+		<div id="pokemon" style="display:inline-block; width:700px;"></div>
+		<div id="access" style="display:inline-block; width:200px; vertical-align:top; position:fixed;">
+			<h1 id="header"></h1>
+			<img id="picture">
+			<h5><strong>Types<strong></h5>
+			<ul></ul>
+			<h5><strong>Height<strong></h5>
+			<h5 id="h"></h5>
+			<h5><strong>Weight<strong></h5>
+			<h5 id="w"></h5>
+		</div>
+	</body>
+</html>

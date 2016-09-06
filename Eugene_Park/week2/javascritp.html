@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="description" content="JavaScript practice">
+	<title>Java Script</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	function find_area(){
+		 var area = .5*( 7 * Math.pow(25 + Math.pow(30/7, 2), .5));
+		 console.log(area);
+	}
+
+	function mul_div(num1, num2){
+		var mult = num1 * num2, div = num1 / num2;
+		console.log("Multiplication: " + mult + ". Input1/Input2: " + div);
+	}
+
+	function guessInt(num){
+		var roll = Math.floor(Math.rand()* 10 + 1);
+		if(roll == num)
+			console.log("Good Work");
+		else
+			console.log("Not matched")
+	}
+
+	function addClass(element_id, class_add){
+		document.getElementsById(element_id).className += class_add;
+	}
+
+	function removeElement(element_id){
+		document.getElementsById(element_id).remove();
+	}
+
+	function addAlert(element_id, message){
+		var elem_id = document.getElementsById(element_id);
+		elem_id.onclick = function() {alert(message);};
+	}
+
+	function addScrollUp(p_num){
+		var ps = document.getElementsByTagName('p');
+		ps[p_num].onclick = function() {
+			ps[p_num].style.maxHeight = '0';
+			ps[p_num].style.opacity = '0';
+		}
+	}
+</script>
+</html>

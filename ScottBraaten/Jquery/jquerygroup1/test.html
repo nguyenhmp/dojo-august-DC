@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+
+			$(document).ready(function() {
+
+				$('button').click(function() {
+					$('#wrapper').css('background-image', $(this).text() + '.jpg')
+				})
+
+				$('select').change(function() {
+					$('#1').attr('src', $(this).val())
+				})
+
+			})
+
+		</script>
+	</head>
+	<body>
+		<select>
+			<option value="red.png">Red</option>
+			<option value="yellow.png">Yellow</option>
+			<option value="green.png">Green</option>
+			<img src="image.png" id="1">
+			<img id="2">
+		</select>
+	</body>
+</html>
